@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 20:09:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 08:45:34
+    @Last Modified time: 2022-05-31 09:01:37
     @Title : Address Book System
 '''
 from CreateContacts import CreateContacts
@@ -87,4 +87,19 @@ class Addressbook:
                 record.phone_number = phone_number
                 record.email = email
                 print("\nRecord Updated Successfully !!")
+        return self.addressbook
+
+    def delete_record(self , fname):  
+        """ 
+        Description: 
+            This function is deleting address book record by first name
+        Parameter:
+            It takes self first name as argument
+        Return:
+            returns none
+        """
+        for record in self.addressbook: 
+            if (record.fname == fname):  # Checking that first name provided by user is matching with Existing Reord or not
+                self.addressbook.remove(record) # Deleting all the details of one user in Address Book
+                print("\nRecord Deleted Successfully")
         return self.addressbook

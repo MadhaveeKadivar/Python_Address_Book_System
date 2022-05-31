@@ -2,9 +2,10 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:30:15
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-30 08:45:34
+    @Last Modified time: 2022-05-31 09:01:37
     @Title : Address Book System Testing
 '''
+from select import select
 import unittest
 from CreateContacts import *
 from AddressBook import *
@@ -72,5 +73,18 @@ class TestArithmeticOperation(unittest.TestCase):
         self.assertEqual(ab[0].zip, '123')
         self.assertEqual(ab[0].phone_number, '1234567890')
         self.assertEqual(ab[0].email, 'mk@gmail.com')
+
+    def test_delete_records(self):
+        """ 
+        Description: 
+            This function is testing delete records method of Addressbook Class
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """ 
+        ab = self.person.delete_record('abc')
+        self.assertEqual(len(ab),0)
+        
 if __name__ == "__main__":
     unittest.main()

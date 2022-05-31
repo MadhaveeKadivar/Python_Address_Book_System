@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:13:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 08:45:34
+    @Last Modified time: 2022-05-31 09:01:37
     @Title : Address Book System
 '''
 # Import 
@@ -10,7 +10,7 @@ from AddressBook import *
 print("\nWelcome to Address Book System")
 
 records = Addressbook()
-print("\n1.Add a new Record\n2.Update Records")
+print("\n1.Add a new Record\n2.Update Records\nDelete Records")
 ch = int(input("\nEnter your choice : "))
 if ch == 1:
     fname = input("\nEnter your First Name : ")
@@ -38,5 +38,9 @@ elif ch == 2:
         records.update_records(old_fname,new_fname,lname,address,city,state,zip,phone_number,email)
     else:
         print("Record Not Found!!")
+elif ch == 3 :
+        f_name  = input("Enter your First Name : ")      
+        records.delete_record(f_name)
+        records.print_records() 
 else:
     print("Choice is invalid")     
