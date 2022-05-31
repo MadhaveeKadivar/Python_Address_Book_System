@@ -34,6 +34,7 @@ class TestArithmeticOperation(unittest.TestCase):
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
+        self.person.add_records('MyBook','abc','xyz','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
         ab_dict = self.person.add_records('MyBook','abc','xyz','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
         self.assertEqual(len(ab_dict['MyBook']),1)
 

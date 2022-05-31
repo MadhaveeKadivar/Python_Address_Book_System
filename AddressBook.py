@@ -62,8 +62,17 @@ class Addressbook:
         person.phone_number = phone_number
         person.email = email
         for content in self.addressbook_dict.keys() : # Accessing all the address book name of dictionary
-            if (content == ab_name): # Checking that address book name provied by user is matching with dictionary address book or not
-                self.addressbook_dict[ab_name].append(person)
+            if (content == ab_name): # Checking that address book name provided by user is matching with dictionary address book or not
+                if (len(self.addressbook_dict[content]) == 0):
+                    self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
+                    print("\nRecord Added successfully in Address Book")
+                else:
+                    for records in self.addressbook_dict[ab_name]: # Accessing all the record of address book by dictionary key
+                        if (records.phone_number != person.phone_number and records.fname != person.fname): # Checking that phone number provided by user is matching with Existing Reord or not
+                            self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
+                            print("\nRecord Added successfully in Address Book")
+                        else:
+                            print(f"\nThis Record is already present in {content} Address Book") 
             else:
                 print(f"\n{content} Address Book not found")
         return self.addressbook_dict
