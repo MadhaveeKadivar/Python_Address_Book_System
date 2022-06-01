@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 20:09:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 09:01:37
+    @Last Modified time: 2022-05-31 18:41:30
     @Title : Address Book System
 '''
 from CreateContacts import CreateContacts
@@ -10,10 +10,17 @@ from CreateContacts import CreateContacts
 
 class Addressbook:
     addressbook_name= [] # Creating List having CreateContacts Class Object Datatype
-
     addressbook_dict = {}
 
     def create_addressbook(self,name):
+        """ 
+        Description: 
+            This function is creating address book
+        Parameter:
+            It takes self and adressbook name as argument
+        Return:
+            returns list of address book and dictionary
+        """
         self.addressbook_name.append(name) # Add address book name which is provided by user  in address book list
         if len(self.addressbook_dict) == 0 : # Checking that dictionary is empty or not
             self.addressbook_dict[name] = [] # creating key value pair where address book name is key and all the redord of address book as value
@@ -65,11 +72,15 @@ class Addressbook:
             if (content == ab_name): # Checking that address book name provided by user is matching with dictionary address book or not
                 if (len(self.addressbook_dict[content]) == 0):
                     self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
+                    self.add_city_name(person.city)
+                    self.add_state_name(person.state)
                     print("\nRecord Added successfully in Address Book")
                 else:
                     for records in self.addressbook_dict[ab_name]: # Accessing all the record of address book by dictionary key
                         if (records.phone_number != person.phone_number and records.fname != person.fname): # Checking that phone number provided by user is matching with Existing Reord or not
                             self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
+                            self.add_city_name(person.city)
+                            self.add_state_name(person.state)
                             print("\nRecord Added successfully in Address Book")
                         else:
                             print(f"\nThis Record is already present in {content} Address Book") 
@@ -164,3 +175,60 @@ class Addressbook:
                         self.addressbook_dict[ab_name].remove(record) # Deleting all the details of one user in Address Book
                         print("\nRecord Deleted Successfully")
         return self.addressbook_dict
+
+
+    def display_persons_by_city(self,city): 
+        """ 
+        Description: 
+            This function is printing address book records by city name
+        Parameter:
+            It takes self and city name as argument
+        Return:
+            returns number of records
+        """
+        count = 0
+        print(f"\nAll records present in multiple address books where city name \"{city}\" are : ")
+        for ab_name in self.addressbook_dict.keys(): # Accessing all the address book name of dictionary
+            print(f"\n\nAddress Book : "+ab_name)
+            i = 1
+            for record in self.addressbook_dict[ab_name]:
+                if record.city == city:
+                    print(f"\n\nRecord - {i}")
+                    print(f"First Name : {record.fname}")
+                    print(f"Last Name : {record.lname}")
+                    print(f"Address : {record.address}")
+                    print(f"City : {record.city}")
+                    print(f"State : {record.state}")
+                    print(f"Email : {record.email}")
+                    print(f"Zip code : {record.zip}")
+                    print(f"Phone Number : {record.phone_number}")
+                    i += 1
+                    count += 1
+        return count
+
+    def display_persons_by_state(self,state): 
+        """ 
+        Description: 
+            This function is printing address book records by state name
+        Parameter:
+            It takes self and state name as argument
+        Return:
+            returns number of records
+        """
+        print(f"\nAll records present in multiple address books where state name \"{state}\" are : ")
+        for ab_name in self.addressbook_dict.keys(): # Accessing all the address book name of dictionary
+            print(f"\n\nAddress Book : "+ab_name)
+            i = 1
+            for record in self.addressbook_dict[ab_name]:
+                if record.state == state:
+                    print(f"\n\nRecord - {i}")
+                    print(f"First Name : {record.fname}")
+                    print(f"Last Name : {record.lname}")
+                    print(f"Address : {record.address}")
+                    print(f"City : {record.city}")
+                    print(f"State : {record.state}")
+                    print(f"Email : {record.email}")
+                    print(f"Zip code : {record.zip}")
+                    print(f"Phone Number : {record.phone_number}")
+                    i += 1
+        return i - 1

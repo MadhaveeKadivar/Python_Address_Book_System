@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:13:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 09:01:37
+    @Last Modified time: 2022-05-31 18:50:37
     @Title : Address Book System
 '''
 # Import 
@@ -12,7 +12,8 @@ print("\nWelcome to Address Book System")
 
 records = Addressbook()
 while True:
-    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Exit")
+    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Display By City")
+    print("5.Display By State\n6.Exit")
     ch = int(input("\nEnter your choice : "))
     if ch == 1:
         ans = input("\nDo you want to add records in new Address Book ? If yes then press 1 : ")
@@ -82,6 +83,12 @@ while True:
                 records.delete_record(fname)
         records.print_records() 
     elif ch == 4 :
+        cname = input("\nEnter city name : ")
+        records.display_persons_by_city(cname)
+    elif ch == 5 :
+        sname = input("\nEnter state name : ")
+        records.display_persons_by_city(sname)
+    elif ch == 6 :
         break
     else:
         print("Choice is invalid")     
