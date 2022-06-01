@@ -89,20 +89,51 @@ class TestArithmeticOperation(unittest.TestCase):
     #     result = self.person.display_persons_by_city('kmn')
     #     self.assertEqual(result,2)
 
-    def test_display_persons_by_state(self):
+    # def test_display_persons_by_state(self):
+    #     """ 
+    #     Description: 
+    #         This function is testing count the records display by state
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """ 
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
+    #     result = self.person.display_persons_by_state('uvw')
+    #     self.assertEqual(result,2)
+
+    def test_add_persons_in_dictionary_by_city_name(self):
         """ 
         Description: 
-            This function is testing count the records display by state
+            This function is testing add_persons_in_dictionary_by_city_name method
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
-        """ 
+        """
         self.person.create_addressbook("MyBook")
         ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
-        result = self.person.display_persons_by_state('uvw')
-        self.assertEqual(result,2)
+        ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','abc','uvw','123','8451238945','mk@gmail.com')
+        city_dict = self.person.add_persons_in_dictionary_by_city_name()
+        self.assertEqual(len(city_dict),2)
+
+    def test_add_persons_in_dictionary_by_state_name(self):
+        """ 
+        Description: 
+            This function is testing add_persons_in_dictionary_by_state_name method
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """
+        self.person.create_addressbook("MyBook")
+        ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','abc','mno','123','8451238945','mk@gmail.com')
+        state_dict = self.person.add_persons_in_dictionary_by_city_name()
+        self.assertEqual(len(state_dict),2)
+
         
 if __name__ == "__main__":
     unittest.main()
