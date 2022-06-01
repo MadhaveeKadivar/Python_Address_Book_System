@@ -2,18 +2,18 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:13:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 18:50:37
+    @Last Modified time: 2022-06-01 19:30:20
     @Title : Address Book System
 '''
 # Import 
 from AddressBook import *
-       
+     
 print("\nWelcome to Address Book System")
 
 records = Addressbook()
 while True:
     print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Display By City")
-    print("5.Display By State\n6.Exit")
+    print("5.Display By State\n6.FileIOOperation\n7.Exit")
     ch = int(input("\nEnter your choice : "))
     if ch == 1:
         ans = input("\nDo you want to add records in new Address Book ? If yes then press 1 : ")
@@ -90,7 +90,10 @@ while True:
         sname = input("\nEnter state name : ")
         total_records =records.display_persons_by_state(sname)
         print(f"\nTotal records present where state is {sname} : {total_records}")
-    elif ch == 6 :
+    elif ch == 6:
+        records.txt_file_write()
+        records.txt_file_read()
+    elif ch == 7 :
         break
     else:
         print("Choice is invalid")     

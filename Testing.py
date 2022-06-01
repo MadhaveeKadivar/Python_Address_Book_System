@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:30:15
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 19:15:20
+    @Last Modified time: 2022-06-01 19:30:20
     @Title : Address Book System Testing
 '''
 from select import select
@@ -134,25 +134,43 @@ class TestArithmeticOperation(unittest.TestCase):
     #     state_dict = self.person.add_persons_in_dictionary_by_city_name()
     #     self.assertEqual(len(state_dict),2)
 
-    def test_sort_method(self):
+    # def test_sort_method(self):
+    #     """ 
+    #     Description: 
+    #         This function is testing all sort  method
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook','madhavee','Kadivar','pqr','abc','mno',123,845123895,'mk@gmail.com')
+    #     ab_dict_by_fname = self.person.sort_by_person_name()
+    #     ab_dict_by_city = self.person.sort_by_city()
+    #     ab_dict_by_state = self.person.sort_by_state()
+    #     ab_dict_by_zip = self.person.sort_by_zip()
+    #     self.assertEqual(ab_dict_by_fname['MyBook'][0].fname , 'madhavee')
+    #     self.assertEqual(ab_dict_by_fname['MyBook'][0].city , 'abc')
+    #     self.assertEqual(ab_dict_by_fname['MyBook'][0].state , 'mno')
+    #     self.assertEqual(ab_dict_by_fname['MyBook'][0].zip ,123 )
+
+    def test_txt_file_write(self):
         """ 
         Description: 
-            This function is testing all sort  method
+            This function is testing that text file write operation is working properly or not 
         Parameter:
-            It takes self as argument
+            It takes one self as argument
         Return:
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
         ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook','madhavee','Kadivar','pqr','abc','mno',123,845123895,'mk@gmail.com')
-        ab_dict_by_fname = self.person.sort_by_person_name()
-        ab_dict_by_city = self.person.sort_by_city()
-        ab_dict_by_state = self.person.sort_by_state()
-        ab_dict_by_zip = self.person.sort_by_zip()
-        self.assertEqual(ab_dict_by_fname['MyBook'][0].fname , 'madhavee')
-        self.assertEqual(ab_dict_by_fname['MyBook'][0].city , 'abc')
-        self.assertEqual(ab_dict_by_fname['MyBook'][0].state , 'mno')
-        self.assertEqual(ab_dict_by_fname['MyBook'][0].zip ,123 )
+        self.person.txt_file_write()
+        with open("txt_test_file.txt") as myfile:
+            line=myfile.readlines()[5]
+        self.assertEqual(line,'First Name : zbc\n')
+
+        
 if __name__ == "__main__":
     unittest.main()
