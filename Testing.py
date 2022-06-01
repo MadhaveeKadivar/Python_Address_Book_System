@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 19:30:15
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-05-31 18:41:30
+    @Last Modified time: 2022-05-31 19:15:20
     @Title : Address Book System Testing
 '''
 from select import select
@@ -74,35 +74,35 @@ class TestArithmeticOperation(unittest.TestCase):
     #     ab_dict = self.person.delete_record('MyBook','abc')
     #     self.assertEqual(len(ab_dict['MyBook']),0)
 
-    # def test_display_persons_by_city(self):
-    #     """ 
-    #     Description: 
-    #         This function is testing count the records display by city 
-    #     Parameter:
-    #         It takes self as argument
-    #     Return:
-    #         returns Nothing
-    #     """ 
-    #     self.person.create_addressbook("MyBook")
-    #     ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
-    #     ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
-    #     result = self.person.display_persons_by_city('kmn')
-    #     self.assertEqual(result,2)
+    def test_display_persons_by_city(self):
+        """ 
+        Description: 
+            This function is testing count the records display by city 
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """ 
+        self.person.create_addressbook("MyBook")
+        ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
+        result = self.person.display_persons_by_city('kmn')
+        self.assertEqual(result,2)
 
-    # def test_display_persons_by_state(self):
-    #     """ 
-    #     Description: 
-    #         This function is testing count the records display by state
-    #     Parameter:
-    #         It takes self as argument
-    #     Return:
-    #         returns Nothing
-    #     """ 
-    #     self.person.create_addressbook("MyBook")
-    #     ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
-    #     ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
-    #     result = self.person.display_persons_by_state('uvw')
-    #     self.assertEqual(result,2)
+    def test_display_persons_by_state(self):
+        """ 
+        Description: 
+            This function is testing count the records display by state
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """ 
+        self.person.create_addressbook("MyBook")
+        ab_dict = self.person.add_records('MyBook','abc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook','Madhavee','Kadivar','pqr','kmn','uvw','123','8451238945','mk@gmail.com')
+        result = self.person.display_persons_by_state('uvw')
+        self.assertEqual(result,2)
 
     def test_add_persons_in_dictionary_by_city_name(self):
         """ 
