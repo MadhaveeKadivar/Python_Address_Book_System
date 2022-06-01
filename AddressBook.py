@@ -280,3 +280,42 @@ class Addressbook:
         for content in self.addressbook_dict.keys():
             self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.fname)
         return self.addressbook_dict
+    
+    def sort_by_city(self):
+        """ 
+        Description: 
+            This function is sorting address book records in dictionary by city
+        Parameter:
+            It takes self as argument
+        Return:
+            returns address book dictionary
+        """
+        for content in self.addressbook_dict.keys():
+            self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.city)
+        return self.addressbook_dict
+    
+    def sort_by_state(self):
+        """ 
+        Description: 
+            This function is sorting address book records in dictionary by person first name
+        Parameter:
+            It takes self as argument
+        Return:
+            returns address book dictionary
+        """
+        for content in self.addressbook_dict.keys():
+            self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.state)
+        return self.addressbook_dict
+
+    def sort_by_zip(self):
+        """ 
+        Description: 
+            This function is sorting address book records in dictionary by zip
+        Parameter:
+            It takes self as argument
+        Return:
+            returns address book dictionary
+        """
+        for content in self.addressbook_dict.keys():
+            self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.zip)
+        return self.addressbook_dict

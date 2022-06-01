@@ -134,20 +134,25 @@ class TestArithmeticOperation(unittest.TestCase):
     #     state_dict = self.person.add_persons_in_dictionary_by_city_name()
     #     self.assertEqual(len(state_dict),2)
 
-    def test_sort_by_person_name(self):
+    def test_sort_method(self):
         """ 
         Description: 
-            This function is testing sort_by_person_name method
+            This function is testing all sort  method
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw','123','1234567890','mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook','madhavee','Kadivar','pqr','abc','mno','123','8451238945','mk@gmail.com')
-        ab_dict = self.person.sort_by_person_name()
-        self.assertEqual(ab_dict['MyBook'][0].fname , 'madhavee')
-
+        ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook','madhavee','Kadivar','pqr','abc','mno',123,845123895,'mk@gmail.com')
+        ab_dict_by_fname = self.person.sort_by_person_name()
+        ab_dict_by_city = self.person.sort_by_city()
+        ab_dict_by_state = self.person.sort_by_state()
+        ab_dict_by_zip = self.person.sort_by_zip()
+        self.assertEqual(ab_dict_by_fname['MyBook'][0].fname , 'madhavee')
+        self.assertEqual(ab_dict_by_fname['MyBook'][0].city , 'abc')
+        self.assertEqual(ab_dict_by_fname['MyBook'][0].state , 'mno')
+        self.assertEqual(ab_dict_by_fname['MyBook'][0].zip ,123 )
 if __name__ == "__main__":
     unittest.main()
