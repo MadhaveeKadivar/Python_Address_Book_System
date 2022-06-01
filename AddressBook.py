@@ -2,7 +2,7 @@
     @Author: Madhavee Kadivar
     @Date: 2022-05-30 20:09:07
     @Last Modified by: Madhavee Kadivar
-    @Last Modified time: 2022-06-01 19:30:20
+    @Last Modified time: 2022-06-01 19:44:46
     @Title : Address Book System
 '''
 from CreateContacts import CreateContacts
@@ -359,5 +359,47 @@ class Addressbook:
             result = f.readlines()
             for i in result:
                 print(i)
+            print(f"\nTotal no. of rows: {len(result)}")
+            
+    def csv_file_write(self):
+        """ 
+        Description: 
+            This function is writing all records in csv file 
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('csv_test_file.csv', 'a',newline='') as cf:
+            header = ['Addressbook','First_Name','Last_Name','Address','City','State','ZipCode','Phone_Number','Email']
+            writer = csv.DictWriter(cf, fieldnames = header)
+            for ab_name in self.addressbook_dict.keys():
+                for record in self.addressbook_dict[ab_name]:
+                    writer.writerow({'Addressbook' : ab_name,'First_Name':record.fname,'Last_Name':record.lname,'Address' : record.address,'City':record.city,'State':record.state,'ZipCode':record.zip,'Phone_Number':record.phone_number,'Email':record.email})
 
-    
+    def csv_file_read(self):
+        """ 
+        Description: 
+            This function is reading all records from csv file and print it on console
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('csv_test_file.csv', 'r') as cf:    
+            csvreader = csv.reader(cf) 
+            next(csvreader)
+            for row in csvreader:
+                print(f"\nAddress Book Name : {row[0]}")
+                print(f"\nFirst Name : {row[1]}")
+                print(f"\nLast Name : {row[2]}")
+                print(f"\nAddress : {row[3]}")
+                print(f"\nCity : {row[4]}")
+                print(f"\nState : {row[5]}")
+                print(f"\nZip code : {row[6]}")
+                print(f"\nPhone Number : {row[7]}")
+                print(f"\nEmail : {row[8]}")
+                
+            print(f"\nTotal no. of rows: {csvreader.line_num}")
+        return csvreader.line_num
+            

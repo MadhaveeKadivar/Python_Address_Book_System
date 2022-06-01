@@ -155,22 +155,36 @@ class TestArithmeticOperation(unittest.TestCase):
     #     self.assertEqual(ab_dict_by_fname['MyBook'][0].state , 'mno')
     #     self.assertEqual(ab_dict_by_fname['MyBook'][0].zip ,123 )
 
-    def test_txt_file_write(self):
+    # def test_txt_file_write(self):
+    #     """ 
+    #     Description: 
+    #         This function is testing that text file write operation is working properly or not 
+    #     Parameter:
+    #         It takes one self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+    #     self.person.txt_file_write()
+    #     with open("txt_test_file.txt") as myfile:
+    #         line=myfile.readlines()[5]
+    #     self.assertEqual(line,'First Name : zbc\n')
+
+    def test_csv_file_write(self):
         """ 
         Description: 
-            This function is testing that text file write operation is working properly or not 
+            This function is testing that csv file write operation is working properly or not 
         Parameter:
             It takes one self as argument
         Return:
             returns Nothing
         """
-        self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-        self.person.txt_file_write()
-        with open("txt_test_file.txt") as myfile:
-            line=myfile.readlines()[5]
-        self.assertEqual(line,'First Name : zbc\n')
-
+        self.person.create_addressbook("book")
+        ab_dict = self.person.add_records('book','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+        self.person.csv_file_write()
+        result = self.person.csv_file_read()
+        self.assertEqual(result,3) # Testing number of rows of csv file
         
 if __name__ == "__main__":
     unittest.main()
