@@ -6,6 +6,7 @@
     @Title : Address Book System
 '''
 # Import 
+from numpy import rec
 from AddressBook import *
      
 print("\nWelcome to Address Book System")
@@ -92,9 +93,11 @@ while True:
         print(f"\nTotal records present where state is {sname} : {total_records}")
     elif ch == 6:
         #records.txt_file_write()
-        records.txt_file_read()
+        #records.txt_file_read()
         #records.csv_file_write()
         #records.csv_file_read()
+        #records.json_file_write()
+        records.json_file_read()
     elif ch == 7 :
         break
     else:

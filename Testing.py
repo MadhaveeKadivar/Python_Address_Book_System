@@ -171,10 +171,25 @@ class TestArithmeticOperation(unittest.TestCase):
     #         line=myfile.readlines()[5]
     #     self.assertEqual(line,'First Name : zbc\n')
 
-    def test_csv_file_write(self):
+    # def test_csv_file_write(self):
+    #     """ 
+    #     Description: 
+    #         This function is testing that csv file write operation is working properly or not 
+    #     Parameter:
+    #         It takes one self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("book")
+    #     ab_dict = self.person.add_records('book','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+    #     self.person.csv_file_write()
+    #     result = self.person.csv_file_read()
+    #     self.assertEqual(result,3) # Testing number of rows of csv file
+
+    def test_json_file_write(self):
         """ 
         Description: 
-            This function is testing that csv file write operation is working properly or not 
+            This function is testing that json file write operation is working properly or not 
         Parameter:
             It takes one self as argument
         Return:
@@ -182,9 +197,11 @@ class TestArithmeticOperation(unittest.TestCase):
         """
         self.person.create_addressbook("book")
         ab_dict = self.person.add_records('book','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-        self.person.csv_file_write()
-        result = self.person.csv_file_read()
-        self.assertEqual(result,3) # Testing number of rows of csv file
+        self.person.create_addressbook("Mybook")
+        ab_dict = self.person.add_records('Mybook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
+        self.person.json_file_write()
+        result = self.person.json_file_read()
+        self.assertEqual(result,2) # Testing number of records of json file
         
 if __name__ == "__main__":
     unittest.main()

@@ -7,6 +7,7 @@
 '''
 from CreateContacts import CreateContacts
 import csv
+import json
 
 class Addressbook:
     addressbook_name= [] # Creating List having CreateContacts Class Object Datatype
@@ -376,7 +377,7 @@ class Addressbook:
             for ab_name in self.addressbook_dict.keys():
                 for record in self.addressbook_dict[ab_name]:
                     writer.writerow({'Addressbook' : ab_name,'First_Name':record.fname,'Last_Name':record.lname,'Address' : record.address,'City':record.city,'State':record.state,'ZipCode':record.zip,'Phone_Number':record.phone_number,'Email':record.email})
-
+            print("\nRecord added succesfully in csv file")
     def csv_file_read(self):
         """ 
         Description: 
@@ -402,4 +403,46 @@ class Addressbook:
                 
             print(f"\nTotal no. of rows: {csvreader.line_num}")
         return csvreader.line_num
-            
+
+    def json_file_write(self):
+        """ 
+        Description: 
+            This function is writing all records in json file
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('json_test_file.json', 'w') as file: 
+            list_ele = []   
+            for ab_name in self.addressbook_dict.keys():
+                for record in self.addressbook_dict[ab_name]:
+                    dict_ele = {'Addressbook' : ab_name,'First_Name':record.fname,'Last_Name':record.lname,'Address' : record.address,'City':record.city,'State':record.state,'ZipCode':record.zip,'Phone_Number':record.phone_number,'Email':record.email}
+                    list_ele.append(dict_ele)
+            obj = json.dumps(list_ele,indent=4)
+            file.write(obj)
+            print("\nRecord added succesfully in json file")
+
+    def json_file_read(self):
+        """ 
+        Description: 
+            This function is reading all records from json file and printing in console
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('json_test_file.json', 'r') as file:   
+            list = json.load(file)            
+            for record in list:
+                print(f"\n\nAddress Book Name : {record['Addressbook']}")
+                print(f"\nFirst Name : {record['First_Name']}")
+                print(f"\nLast Name : {record['Addressbook']}")
+                print(f"\nAddress : {record['Address']}")
+                print(f"\nCity : {record['City']}")
+                print(f"\nState : {record['State']}")
+                print(f"\nZip code : {record['ZipCode']}")
+                print(f"\nPhone Number : {record['Phone_Number']}")
+                print(f"\nEmail : {record['Email']}")
+            print(f"\nTotal number of records in json file : {len(list)}")
+        return len(list)

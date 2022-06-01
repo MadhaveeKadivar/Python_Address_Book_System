@@ -1,0 +1,24 @@
+[
+    {
+        "Addressbook": "book",
+        "First_Name": "zbc",
+        "Last_Name": "Kadivar",
+        "Address": "pqr",
+        "City": "kmn",
+        "State": "uvw",
+        "ZipCode": 321,
+        "Phone_Number": 12345678,
+        "Email": "mk@gmail.com"
+    },
+    {
+        "Addressbook": "Mybook",
+        "First_Name": "zbc",
+        "Last_Name": "Kadivar",
+        "Address": "pqr",
+        "City": "kmn",
+        "State": "uvw",
+        "ZipCode": 321,
+        "Phone_Number": 12345678,
+        "Email": "mk@gmail.com"
+    }
+]
