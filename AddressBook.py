@@ -413,8 +413,13 @@ class Addressbook:
         Return:
             returns nothing
         """
-        with open('json_test_file.json', 'w') as file: 
-            list_ele = []   
+        list_ele = []  
+        with open('json_test_file.json', 'r') as file:   
+            list = json.load(file) 
+            if len(list) != 0:           
+                for record in list:
+                    list_ele.append(record)
+        with open('json_test_file.json', 'w') as file:              
             for ab_name in self.addressbook_dict.keys():
                 for record in self.addressbook_dict[ab_name]:
                     dict_ele = {'Addressbook' : ab_name,'First_Name':record.fname,'Last_Name':record.lname,'Address' : record.address,'City':record.city,'State':record.state,'ZipCode':record.zip,'Phone_Number':record.phone_number,'Email':record.email}

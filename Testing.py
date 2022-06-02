@@ -164,9 +164,6 @@ class TestArithmeticOperation(unittest.TestCase):
     #     Return:
     #         returns Nothing
     #     """
-    #     self.person.create_addressbook("MyBook")
-    #     ab_dict = self.person.add_records('MyBook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-    #     self.person.txt_file_write()
     #     with open("txt_test_file.txt") as myfile:
     #         line=myfile.readlines()[5]
     #     self.assertEqual(line,'First Name : zbc\n')
@@ -180,11 +177,8 @@ class TestArithmeticOperation(unittest.TestCase):
     #     Return:
     #         returns Nothing
     #     """
-    #     self.person.create_addressbook("book")
-    #     ab_dict = self.person.add_records('book','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-    #     self.person.csv_file_write()
     #     result = self.person.csv_file_read()
-    #     self.assertEqual(result,3) # Testing number of rows of csv file
+    #     self.assertEqual(result,5) # Testing number of rows of csv file
 
     def test_json_file_write(self):
         """ 
@@ -195,13 +189,8 @@ class TestArithmeticOperation(unittest.TestCase):
         Return:
             returns Nothing
         """
-        self.person.create_addressbook("book")
-        ab_dict = self.person.add_records('book','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-        self.person.create_addressbook("Mybook")
-        ab_dict = self.person.add_records('Mybook','zbc','Kadivar','pqr','kmn','uvw',321,12345678,'mk@gmail.com')
-        self.person.json_file_write()
         result = self.person.json_file_read()
-        self.assertEqual(result,2) # Testing number of records of json file
+        self.assertEqual(result,3) # Testing number of records of json file
         
 if __name__ == "__main__":
     unittest.main()
