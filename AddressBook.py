@@ -8,8 +8,19 @@
 from CreateContacts import CreateContacts
 import csv
 import json
+import logging
+
+logging.basicConfig(filename = 'file.log',format = '%(asctime)s | %(levelname)s | %(lineno)d: %(message)s')
+logger = logging.getLogger("addressbook")
+logger.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+log_format = '%(message)s'
+console_handler.setFormatter(logging.Formatter(log_format))
+logger.addHandler(console_handler)
+
 
 class Addressbook:
+    
     addressbook_name= [] # Creating List having CreateContacts Class Object Datatype
     addressbook_dict = {}
     city_dictionary = {}
@@ -28,7 +39,7 @@ class Addressbook:
             self.addressbook_dict[name] = [] # creating key value pair where address book name is key and all the redord of address book as value
         else:
             if name in self.addressbook_dict.keys(): # Checking that address book given by user is already present in dictionary or not
-                print("This AddressBook is also present")
+                logger.warning("This AddressBook is also present")
             else:
                 self.addressbook_dict[name] = [] # creating key value pair where address book name is key and all the redord of address book as value
         return self.addressbook_name , self.addressbook_dict
@@ -44,12 +55,12 @@ class Addressbook:
             returns Nothing
         """
         if len(self.addressbook_name) == 0: # Checking that address book list is empty or not
-            print("\nThere is no address book avilable")
+            logger.warning("\nThere is no address book avilable")
             self.temp = 1
         else:
             for name in self.addressbook_name: # Accessing all the names in address book
-                print("\n\nList of existing Address Book Are : ")
-                print(name)
+                logger.info("\n\nList of existing Address Book Are : ")
+                logger.info(name)
 
                 
     def add_records(self,ab_name,fname,lname,address,city,state,zip,phone_number,email):
@@ -74,42 +85,42 @@ class Addressbook:
             if (content == ab_name): # Checking that address book name provided by user is matching with dictionary address book or not
                 if (len(self.addressbook_dict[content]) == 0):
                     self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
-                    print("\nRecord Added successfully in Address Book")
+                    logger.info("\nRecord Added successfully in Address Book")
                 else:
                     for records in self.addressbook_dict[ab_name]: # Accessing all the record of address book by dictionary key
                         if (records.phone_number != person.phone_number and records.fname != person.fname): # Checking that phone number provided by user is matching with Existing Reord or not
                             self.addressbook_dict[ab_name].append(person) # Adding person record in Address book 
-                            print("\nRecord Added successfully in Address Book")
+                            logger.info("\nRecord Added successfully in Address Book")
                         else:
-                            print(f"\nThis Record is already present in {content} Address Book") 
+                            logger.info(f"\nThis Record is already present in {content} Address Book") 
             else:
-                print(f"\n{content} Address Book not found")
+                logger.debug(f"\n{content} Address Book not found")
         return self.addressbook_dict
     
     def print_records(self):
         """ 
         Description: 
-            This function is printing address book records
+            This function is logger.infoing address book records
         Parameter:
             It takes self argument
         Return:
             returns none
         """
-        print("\n\nRecords Present in Multiple Address Book : ")
+        logger.info("\n\nRecords Present in Multiple Address Book : ")
         
         for ab_name in self.addressbook_dict.keys(): # Accessing all the address book name of dictionary
-            print(f"\n\nAddress Book : "+ab_name)
+            logger.info(f"\n\nAddress Book : "+ab_name)
             i = 1
             for record in self.addressbook_dict[ab_name]: # Accessing all the records of list one by one using foreach loop
-                print(f"\n\nRecord - {i}")
-                print(f"First Name : {record.fname}")
-                print(f"Last Name : {record.lname}")
-                print(f"Address : {record.address}")
-                print(f"City : {record.city}")
-                print(f"State : {record.state}")
-                print(f"Email : {record.email}")
-                print(f"Zip code : {record.zip}")
-                print(f"Phone Number : {record.phone_number}")
+                logger.info(f"\n\nRecord - {i}")
+                logger.info(f"First Name : {record.fname}")
+                logger.info(f"Last Name : {record.lname}")
+                logger.info(f"Address : {record.address}")
+                logger.info(f"City : {record.city}")
+                logger.info(f"State : {record.state}")
+                logger.info(f"Email : {record.email}")
+                logger.info(f"Zip code : {record.zip}")
+                logger.info(f"Phone Number : {record.phone_number}")
                 i += 1
 
     def find_records(self,ab_name,fname):
@@ -127,9 +138,9 @@ class Addressbook:
                     if (record.fname == fname):
                         return True
                     else:
-                        print("\nRecord Not Found")
+                        logger.info("\nRecord Not Found")
             else:
-                print("Address book not found")
+                logger.info("Address book not found")
         return False
     
     def update_records(self,ab_name,old_fname,new_fname,lname,address,city,state,zip,phone_number,email): 
@@ -153,7 +164,7 @@ class Addressbook:
                         record.zip = zip 
                         record.phone_number = phone_number
                         record.email = email
-                        print("\nRecord Updated Successfully !!")
+                        logger.info("\nRecord Updated Successfully !!")
                         
         return self.addressbook_dict
 
@@ -171,35 +182,35 @@ class Addressbook:
                 for record in self.addressbook_dict[ab_name]:
                     if (record.fname == fname): 
                         self.addressbook_dict[ab_name].remove(record) # Deleting all the details of one user in Address Book
-                        print("\nRecord Deleted Successfully")
+                        logger.info("\nRecord Deleted Successfully")
         return self.addressbook_dict
 
 
     def display_persons_by_city(self,city): 
         """ 
         Description: 
-            This function is printing address book records by city name
+            This function is logger.infoing address book records by city name
         Parameter:
             It takes self and city name as argument
         Return:
             returns number of records
         """
         count = 0
-        print(f"\nAll records present in multiple address books where city name \"{city}\" are : ")
+        logger.debug(f"\nAll records present in multiple address books where city name \"{city}\" are : ")
         for ab_name in self.addressbook_dict.keys(): # Accessing all the address book name of dictionary
-            print(f"\n\nAddress Book : "+ab_name)
+            logger.info(f"\n\nAddress Book : "+ab_name)
             i = 1
             for record in self.addressbook_dict[ab_name]:
                 if record.city == city:
-                    print(f"\n\nRecord - {i}")
-                    print(f"First Name : {record.fname}")
-                    print(f"Last Name : {record.lname}")
-                    print(f"Address : {record.address}")
-                    print(f"City : {record.city}")
-                    print(f"State : {record.state}")
-                    print(f"Email : {record.email}")
-                    print(f"Zip code : {record.zip}")
-                    print(f"Phone Number : {record.phone_number}")
+                    logger.info(f"\n\nRecord - {i}")
+                    logger.info(f"First Name : {record.fname}")
+                    logger.info(f"Last Name : {record.lname}")
+                    logger.info(f"Address : {record.address}")
+                    logger.info(f"City : {record.city}")
+                    logger.info(f"State : {record.state}")
+                    logger.info(f"Email : {record.email}")
+                    logger.info(f"Zip code : {record.zip}")
+                    logger.info(f"Phone Number : {record.phone_number}")
                     i += 1
                     count += 1
         return count
@@ -207,28 +218,28 @@ class Addressbook:
     def display_persons_by_state(self,state): 
         """ 
         Description: 
-            This function is printing address book records by state name
+            This function is logger.infoing address book records by state name
         Parameter:
             It takes self and state name as argument
         Return:
             returns number of records
         """
         count = 0
-        print(f"\nAll records present in multiple address books where state name \"{state}\" are : ")
+        logger.info(f"\nAll records present in multiple address books where state name \"{state}\" are : ")
         for ab_name in self.addressbook_dict.keys(): # Accessing all the address book name of dictionary
-            print(f"\n\nAddress Book : "+ab_name)
+            logger.info(f"\n\nAddress Book : "+ab_name)
             i = 1
             for record in self.addressbook_dict[ab_name]:
                 if record.state == state:
-                    print(f"\n\nRecord - {i}")
-                    print(f"First Name : {record.fname}")
-                    print(f"Last Name : {record.lname}")
-                    print(f"Address : {record.address}")
-                    print(f"City : {record.city}")
-                    print(f"State : {record.state}")
-                    print(f"Email : {record.email}")
-                    print(f"Zip code : {record.zip}")
-                    print(f"Phone Number : {record.phone_number}")
+                    logger.info(f"\n\nRecord - {i}")
+                    logger.info(f"First Name : {record.fname}")
+                    logger.info(f"Last Name : {record.lname}")
+                    logger.info(f"Address : {record.address}")
+                    logger.info(f"City : {record.city}")
+                    logger.info(f"State : {record.state}")
+                    logger.info(f"Email : {record.email}")
+                    logger.info(f"Zip code : {record.zip}")
+                    logger.info(f"Phone Number : {record.phone_number}")
                     i += 1
                     count += 1
         return count
@@ -345,12 +356,12 @@ class Addressbook:
                     f.writelines(f"\nZip code : {record.zip}")
                     f.writelines(f"\nPhone Number : {record.phone_number}")
                     i += 1
-        print("\nRecord added succesfully in text file")
+        logger.info("\nRecord added succesfully in text file")
 
     def txt_file_read(self):
         """ 
         Description: 
-            This function is reading all records from txt file and print it on console
+            This function is reading all records from txt file and logger.info it on console
         Parameter:
             It takes self as argument
         Return:
@@ -359,8 +370,8 @@ class Addressbook:
         with open('txt_test_file.txt', 'r') as f:
             result = f.readlines()
             for i in result:
-                print(i)
-            print(f"\nTotal no. of rows: {len(result)}")
+                logger.info(i)
+            logger.info(f"\nTotal no. of rows: {len(result)}")
             
     def csv_file_write(self):
         """ 
@@ -377,11 +388,11 @@ class Addressbook:
             for ab_name in self.addressbook_dict.keys():
                 for record in self.addressbook_dict[ab_name]:
                     writer.writerow({'Addressbook' : ab_name,'First_Name':record.fname,'Last_Name':record.lname,'Address' : record.address,'City':record.city,'State':record.state,'ZipCode':record.zip,'Phone_Number':record.phone_number,'Email':record.email})
-            print("\nRecord added succesfully in csv file")
+            logger.info("\nRecord added succesfully in csv file")
     def csv_file_read(self):
         """ 
         Description: 
-            This function is reading all records from csv file and print it on console
+            This function is reading all records from csv file and logger.info it on console
         Parameter:
             It takes self as argument
         Return:
@@ -391,17 +402,17 @@ class Addressbook:
             csvreader = csv.reader(cf) 
             next(csvreader)
             for row in csvreader:
-                print(f"\nAddress Book Name : {row[0]}")
-                print(f"\nFirst Name : {row[1]}")
-                print(f"\nLast Name : {row[2]}")
-                print(f"\nAddress : {row[3]}")
-                print(f"\nCity : {row[4]}")
-                print(f"\nState : {row[5]}")
-                print(f"\nZip code : {row[6]}")
-                print(f"\nPhone Number : {row[7]}")
-                print(f"\nEmail : {row[8]}")
+                logger.info(f"\nAddress Book Name : {row[0]}")
+                logger.info(f"\nFirst Name : {row[1]}")
+                logger.info(f"\nLast Name : {row[2]}")
+                logger.info(f"\nAddress : {row[3]}")
+                logger.info(f"\nCity : {row[4]}")
+                logger.info(f"\nState : {row[5]}")
+                logger.info(f"\nZip code : {row[6]}")
+                logger.info(f"\nPhone Number : {row[7]}")
+                logger.info(f"\nEmail : {row[8]}")
                 
-            print(f"\nTotal no. of rows: {csvreader.line_num}")
+            logger.info(f"\nTotal no. of rows: {csvreader.line_num}")
         return csvreader.line_num
 
     def json_file_write(self):
@@ -426,12 +437,12 @@ class Addressbook:
                     list_ele.append(dict_ele)
             obj = json.dumps(list_ele,indent=4)
             file.write(obj)
-            print("\nRecord added succesfully in json file")
+            logger.info("\nRecord added succesfully in json file")
 
     def json_file_read(self):
         """ 
         Description: 
-            This function is reading all records from json file and printing in console
+            This function is reading all records from json file and logger.infoing in console
         Parameter:
             It takes self as argument
         Return:
@@ -440,14 +451,15 @@ class Addressbook:
         with open('json_test_file.json', 'r') as file:   
             list = json.load(file)            
             for record in list:
-                print(f"\n\nAddress Book Name : {record['Addressbook']}")
-                print(f"\nFirst Name : {record['First_Name']}")
-                print(f"\nLast Name : {record['Addressbook']}")
-                print(f"\nAddress : {record['Address']}")
-                print(f"\nCity : {record['City']}")
-                print(f"\nState : {record['State']}")
-                print(f"\nZip code : {record['ZipCode']}")
-                print(f"\nPhone Number : {record['Phone_Number']}")
-                print(f"\nEmail : {record['Email']}")
-            print(f"\nTotal number of records in json file : {len(list)}")
+                logger.info(f"\n\nAddress Book Name : {record['Addressbook']}")
+                logger.info(f"\nFirst Name : {record['First_Name']}")
+                logger.info(f"\nLast Name : {record['Addressbook']}")
+                logger.info(f"\nAddress : {record['Address']}")
+                logger.info(f"\nCity : {record['City']}")
+                logger.info(f"\nState : {record['State']}")
+                logger.info(f"\nZip code : {record['ZipCode']}")
+                logger.info(f"\nPhone Number : {record['Phone_Number']}")
+                logger.info(f"\nEmail : {record['Email']}")
+            logger.info(f"\nTotal number of records in json file : {len(list)}")
+
         return len(list)
