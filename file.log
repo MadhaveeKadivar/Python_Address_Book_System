@@ -1,0 +1,116 @@
+
+2022-06-03 19:31:51,566 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:31:51,566 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:32:04,812 | ERROR | 126: Error Occurred : 
+2022-06-03 19:32:04,812 | INFO | 130: Thank You!!!
+2022-06-03 19:38:24,854 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:38:24,854 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:38:27,483 | INFO | 130: Thank You!!!
+2022-06-03 19:39:01,126 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:39:01,126 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:39:03,502 | ERROR | 126: 
+Traceback (most recent call last):
+  File "d:\Python_ML_Bridgelabz\Python_AddressBookSystem\AddressBookMainClass.py", line 28, in <module>
+    ch = int(input("\nEnter your choice : "))
+KeyboardInterrupt
+2022-06-03 19:39:03,502 | INFO | 130: Thank You!!!
+2022-06-03 19:39:37,338 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:39:37,338 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:39:39,694 | INFO | 130: Thank You!!!
+2022-06-03 19:41:15,813 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:41:15,813 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:41:18,696 | INFO | 130: Thank You!!!
+2022-06-03 19:42:31,996 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:42:31,996 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:42:33,440 | ERROR | 126: 
+Traceback (most recent call last):
+  File "d:\Python_ML_Bridgelabz\Python_AddressBookSystem\AddressBookMainClass.py", line 28, in <module>
+    ch = int(input("\nEnter your choice : "))
+KeyboardInterrupt
+2022-06-03 19:42:33,441 | INFO | 130: Thank You!!!
+2022-06-03 19:43:04,782 | INFO | 23: 
+Welcome to Address Book System
+2022-06-03 19:43:04,782 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:43:08,962 | WARNING | 58: 
+There is no address book avilable
+2022-06-03 19:43:08,962 | INFO | 53: 
+Please Add Address Book First by entering choice 1
+2022-06-03 19:43:08,963 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
+2022-06-03 19:43:23,491 | INFO | 37: 
+Enter details for contact 1 : 
+
+2022-06-03 19:43:27,082 | ERROR | 49: Zip code and Phone Number should be digit
+Traceback (most recent call last):
+  File "d:\Python_ML_Bridgelabz\Python_AddressBookSystem\AddressBookMainClass.py", line 43, in <module>
+    zip = int(input("Enter your Zip Code : "))
+ValueError: invalid literal for int() with base 10: 'sdfgh'
+2022-06-03 19:43:27,084 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
