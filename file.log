@@ -114,3 +114,13 @@ ValueError: invalid literal for int() with base 10: 'sdfgh'
 5.Display By State
 6.FileIOOperation
 7.Exit
+2022-06-20 08:30:54,086 | INFO | 23: 
+Welcome to Address Book System
+2022-06-20 08:30:54,087 | INFO | 27: 
+1.Add a new Record
+2.Update Records
+3.Delete Records
+4.Display By City
+5.Display By State
+6.FileIOOperation
+7.Exit
